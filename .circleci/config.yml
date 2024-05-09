@@ -38,16 +38,16 @@ jobs:
           name: Authorize Target Deployment Org
           command: |
             #Authorize target org
-          #sf org login jwt --client-id $CONSUMER_KEY --jwt-key-file assets/server.key --username $USER_NAME --alias my-hub-org --instance-url $ENDPOINT
+            #sf org login jwt --client-id $CONSUMER_KEY --jwt-key-file assets/server.key --username $USER_NAME --alias my-hub-org --instance-url $ENDPOINT
             sf org login jwt --client-id 3MVG9HB6vm3GZZR8oRlaMQLtOXT9kVz2KULeuZ1VLakBcyU8ZZRK.YdHakYSy1GIg4a1TTC71bgBA_GI4sUUt --jwt-key-file assets/server.key --username ai-dev.raghu@wipro.com.dev --alias my-hub-org --instance-url https://login.salesforce.com
-          #sfdx auth:jwt:grant --instanceurl $ENDPOINT  --clientid $CONSUMER_KEY --jwt-key-file assets/server.key --username $USER_NAME --setalias UAT
+            #sfdx auth:jwt:grant --instanceurl $ENDPOINT  --clientid $CONSUMER_KEY --jwt-key-file assets/server.key --username $USER_NAME --setalias UAT
       - run:
           name: Deploy to Target Deployment Org
           command: |
             #Deploy to target deployment org and run unit tests.
             sf project deploy start  --source-dir $DEPLOYDIR --target-org my-hub-org --concise --wait 10 --testlevel $TESTLEVEL
 
-           #sfdx force:mdapi:deploy --wait 10 --deploydir $DEPLOYDIR --targetusername UAT --testlevel $TESTLEVEL
+            #sfdx force:mdapi:deploy --wait 10 --deploydir $DEPLOYDIR --targetusername UAT --testlevel $TESTLEVEL
 
             #Example shows how to run a check only deploy.
 
